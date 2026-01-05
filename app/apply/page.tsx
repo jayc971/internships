@@ -88,7 +88,7 @@ function ApplicationFormContent() {
                     name="firstName"
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
-                    placeholder="John"
+                    placeholder="First Name"
                   />
                 </div>
 
@@ -102,7 +102,7 @@ function ApplicationFormContent() {
                     name="lastName"
                     required
                     className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
-                    placeholder="Doe"
+                    placeholder="Last Name"
                   />
                 </div>
               </div>
@@ -117,7 +117,7 @@ function ApplicationFormContent() {
                   name="email"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
-                  placeholder="john.doe@example.com"
+                  placeholder="name@email.com"
                 />
               </div>
 
@@ -131,7 +131,7 @@ function ApplicationFormContent() {
                   name="phone"
                   required
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
-                  placeholder="+94 XX XXX XXXX"
+                  placeholder="Phone Number"
                 />
               </div>
 
@@ -184,7 +184,7 @@ function ApplicationFormContent() {
                   rows={5}
                   maxLength={1200}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors resize-none"
-                  placeholder="Tell us about yourself, your interests, and why you're excited about this internship opportunity..."
+                  placeholder="Tell us about yourself and why you're interested in this position..."
                 />
               </div>
 
@@ -198,7 +198,7 @@ function ApplicationFormContent() {
                   name="references"
                   rows={4}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors resize-none"
-                  placeholder="Please provide 2-3 non-related references with contact information (e.g., teachers, mentors, community leaders)"
+                  placeholder="Please provide non-related references (if any)"
                 />
               </div>
 
