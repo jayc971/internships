@@ -20,7 +20,7 @@ export const positions: Position[] = [
   },
   {
     id: 'frontend-intern',
-    title: 'Frontend Development Intern',
+    title: 'Frontend Developer (Intern)',
     description: 'Build modern, responsive user interfaces using React, TypeScript, and contemporary frontend technologies.',
     responsibilities: [
       'Develop React components with TypeScript',
@@ -37,7 +37,7 @@ export const positions: Position[] = [
   },
   {
     id: 'backend-intern',
-    title: 'Backend Development Intern',
+    title: 'Backend Developer (Intern)',
     description: 'Develop server-side applications, APIs, and work with databases to power our digital products.',
     responsibilities: [
       'Build and maintain RESTful APIs',
