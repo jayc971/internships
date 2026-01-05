@@ -3,6 +3,7 @@ import { getPositionById } from '@/lib/positions';
 
 // Mapping of clean slugs to position IDs
 const slugToPositionId: Record<string, string> = {
+  'intern': 'qa-intern',
   'qa': 'qa-intern',
   'qaintern': 'qa-intern',
   'frontend': 'frontend-intern',
