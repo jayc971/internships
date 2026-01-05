@@ -5,12 +5,13 @@ import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { positions, getPositionById, getPositionTitle } from '@/lib/positions';
-import { Suspense } from 'react';
+import { Suspense, useState } from 'react';
 
 function ApplicationFormContent() {
   const searchParams = useSearchParams();
   const positionParam = searchParams.get('position') || '';
   const selectedPosition = positionParam ? getPositionById(positionParam) : null;
+  const [showAllResponsibilities, setShowAllResponsibilities] = useState(false);
 
   return (
     <div className="min-h-screen bg-background">
@@ -30,6 +31,34 @@ function ApplicationFormContent() {
                   {selectedPosition.description}
                 </p>
               )}
+
+              {/* Responsibilities Section */}
+              {selectedPosition && selectedPosition.responsibilities && selectedPosition.responsibilities.length > 0 && (
+                <div className="mt-4 mb-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+                  <h3 className="text-lg font-semibold text-text mb-3">Key Responsibilities</h3>
+                  <ul className="space-y-2">
+                    {(showAllResponsibilities
+                      ? selectedPosition.responsibilities
+                      : selectedPosition.responsibilities.slice(0, 2)
+                    ).map((responsibility, index) => (
+                      <li key={index} className="flex items-start">
+                        <span className="text-primary mr-2 mt-1">•</span>
+                        <span className="text-gray-700">{responsibility}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  {selectedPosition.responsibilities.length > 2 && (
+                    <button
+                      type="button"
+                      onClick={() => setShowAllResponsibilities(!showAllResponsibilities)}
+                      className="mt-3 text-primary hover:text-secondary font-medium text-sm transition-colors"
+                    >
+                      {showAllResponsibilities ? 'See less' : `See more (${selectedPosition.responsibilities.length - 2} more)`}
+                    </button>
+                  )}
+                </div>
+              )}
+
               <p className="text-gray-600">
                 Fill out the form below to submit your application. We&apos;ll review it and get back to you soon!
               </p>
