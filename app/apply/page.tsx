@@ -2,6 +2,8 @@
 
 import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
+import Navbar from '@/components/Navbar';
+import Footer from '@/components/Footer';
 import { positions, getPositionTitle } from '@/lib/positions';
 import { Suspense } from 'react';
 
@@ -11,16 +13,11 @@ function ApplicationFormContent() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="bg-white shadow-sm">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <h1 className="text-3xl font-bold text-primary">InternLK</h1>
-          <p className="text-sm text-gray-600 mt-1">Launch Your Career in Sri Lanka</p>
-        </div>
-      </header>
+      {/* Navigation */}
+      <Navbar />
 
       {/* Form Section */}
-      <section className="py-12">
+      <section className="pt-32 pb-12">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="bg-white rounded-lg shadow-md p-8">
             <div className="mb-8">
@@ -33,10 +30,17 @@ function ApplicationFormContent() {
             </div>
 
             <form
-              action="https://formspree.io/f/YOUR_FORM_ID"
+              action="https://formspree.io/f/mjgklpzp"
               method="POST"
               className="space-y-6"
             >
+              {/* Redirect to thank you page after submission */}
+              <input
+                type="hidden"
+                name="_next"
+                value={typeof window !== 'undefined' ? `${window.location.origin}/thank-you` : '/thank-you'}
+              />
+
               {/* Personal Information */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
@@ -225,13 +229,7 @@ function ApplicationFormContent() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-white border-t border-gray-200 py-8 mt-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <p className="text-gray-600 text-sm">
-            © {new Date().getFullYear()} InternLK. All rights reserved.
-          </p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

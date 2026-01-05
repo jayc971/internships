@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "InternLK - Launch Your Career in Sri Lanka",
-  description: "Connecting Sri Lankan talent with exciting internship opportunities in tech and design.",
+  description: "A California-based startup expanding across Sri Lanka. Connect with meaningful internship opportunities in tech, design, and QA. Remote-first, real-world experience with Silicon Valley mentorship.",
 };
 
 export default function RootLayout({
