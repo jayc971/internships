@@ -174,13 +174,12 @@ function ApplicationFormContent() {
               {/* About You */}
               <div>
                 <label htmlFor="introduction" className="block text-sm font-medium text-gray-700 mb-2">
-                  Brief Introduction <span className="text-red-500">*</span>
-                  <span className="text-gray-500 text-xs ml-2">(Max 200 words)</span>
+                  Brief Introduction
+                  <span className="text-gray-500 text-xs ml-2">(Optional, Max 200 words)</span>
                 </label>
                 <textarea
                   id="introduction"
                   name="introduction"
-                  required
                   rows={5}
                   maxLength={1200}
                   className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors resize-none"
