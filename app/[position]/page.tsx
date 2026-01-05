@@ -1,6 +1,8 @@
 'use client';
 
-import { notFound, redirect } from 'next/navigation';
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+import { notFound } from 'next/navigation';
 import { getPositionById } from '@/lib/positions';
 
 // Mapping of clean slugs to position IDs
@@ -16,19 +18,39 @@ const slugToPositionId: Record<string, string> = {
   'uiux-intern': 'uiux-intern',
 };
 
+export function generateStaticParams() {
+  return Object.keys(slugToPositionId).map((slug) => ({
+    position: slug,
+  }));
+}
+
 export default function PositionApplyPage({ params }: { params: { position: string } }) {
+  const router = useRouter();
   const positionId = slugToPositionId[params.position];
 
-  if (!positionId) {
-    notFound();
-  }
+  useEffect(() => {
+    if (!positionId) {
+      notFound();
+      return;
+    }
 
-  const position = getPositionById(positionId);
+    const position = getPositionById(positionId);
 
-  if (!position) {
-    notFound();
-  }
+    if (!position) {
+      notFound();
+      return;
+    }
 
-  // Redirect to the apply page with the position parameter
-  redirect(`/apply?position=${positionId}`);
+    // Client-side redirect to the apply page with the position parameter
+    router.replace(`/apply?position=${positionId}`);
+  }, [positionId, router]);
+
+  return (
+    <div className="min-h-screen flex items-center justify-center">
+      <div className="text-center">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary mx-auto"></div>
+        <p className="mt-4 text-gray-600">Redirecting...</p>
+      </div>
+    </div>
+  );
 }
