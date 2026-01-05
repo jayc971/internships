@@ -5,6 +5,17 @@ interface PositionCardProps {
   position: Position;
 }
 
+// Convert position ID to clean slug
+function getPositionSlug(positionId: string): string {
+  const slugMap: Record<string, string> = {
+    'qa-intern': 'qaintern',
+    'frontend-intern': 'frontend',
+    'backend-intern': 'backend',
+    'uiux-intern': 'uiux',
+  };
+  return slugMap[positionId] || positionId;
+}
+
 export default function PositionCard({ position }: PositionCardProps) {
   return (
     <div className="bg-white rounded-lg shadow-md p-6 hover:shadow-lg transition-shadow duration-300 border border-gray-100">
@@ -24,7 +35,7 @@ export default function PositionCard({ position }: PositionCardProps) {
       </div>
 
       <Link
-        href={`/apply?position=${position.id}`}
+        href={`/${getPositionSlug(position.id)}`}
         className="inline-block w-full text-center bg-primary hover:bg-secondary text-white font-medium py-2.5 px-6 rounded-lg transition-colors duration-200"
       >
         Apply Now

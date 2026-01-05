@@ -4,12 +4,13 @@ import { useSearchParams } from 'next/navigation';
 import Link from 'next/link';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
-import { positions, getPositionTitle } from '@/lib/positions';
+import { positions, getPositionById, getPositionTitle } from '@/lib/positions';
 import { Suspense } from 'react';
 
 function ApplicationFormContent() {
   const searchParams = useSearchParams();
   const positionParam = searchParams.get('position') || '';
+  const selectedPosition = positionParam ? getPositionById(positionParam) : null;
 
   return (
     <div className="min-h-screen bg-background">
@@ -24,6 +25,11 @@ function ApplicationFormContent() {
               <h2 className="text-3xl font-bold text-text mb-2">
                 Apply for {positionParam ? getPositionTitle(positionParam) : 'Internship'}
               </h2>
+              {selectedPosition && (
+                <p className="text-lg text-primary font-medium mb-3">
+                  {selectedPosition.description}
+                </p>
+              )}
               <p className="text-gray-600">
                 Fill out the form below to submit your application. We&apos;ll review it and get back to you soon!
               </p>
