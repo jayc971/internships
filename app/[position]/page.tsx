@@ -20,16 +20,17 @@ export function generateStaticParams() {
   }));
 }
 
-export default function PositionApplyPage({ params }: { params: { position: string } }) {
-  const positionId = slugToPositionId[params.position];
+export default async function PositionApplyPage({ params }: { params: Promise<{ position: string }> }) {
+  const { position } = await params;
+  const positionId = slugToPositionId[position];
 
   if (!positionId) {
     notFound();
   }
 
-  const position = getPositionById(positionId);
+  const positionData = getPositionById(positionId);
 
-  if (!position) {
+  if (!positionData) {
     notFound();
   }
 
