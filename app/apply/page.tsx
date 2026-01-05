@@ -142,20 +142,6 @@ function ApplicationFormContent() {
                 />
               </div>
 
-              <div>
-                <label htmlFor="portfolio" className="block text-sm font-medium text-gray-700 mb-2">
-                  Portfolio / GitHub Link
-                  <span className="text-gray-500 text-xs ml-2">(Optional)</span>
-                </label>
-                <input
-                  type="url"
-                  id="portfolio"
-                  name="portfolio"
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-colors"
-                  placeholder="https://github.com/yourusername or https://yourportfolio.com"
-                />
-              </div>
-
               {/* About You */}
               <div>
                 <label htmlFor="introduction" className="block text-sm font-medium text-gray-700 mb-2">
@@ -189,7 +175,7 @@ function ApplicationFormContent() {
 
               <div>
                 <label htmlFor="compensation" className="block text-sm font-medium text-gray-700 mb-2">
-                  Expected Monthly Compensation
+                  Salary Expectation
                   <span className="text-gray-500 text-xs ml-2">(Optional)</span>
                 </label>
                 <select

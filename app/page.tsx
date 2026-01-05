@@ -1,11 +1,31 @@
 'use client';
 
+import { useEffect } from 'react';
 import PositionCard from '@/components/PositionCard';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { positions } from '@/lib/positions';
 
 export default function Home() {
+  // Handle hash navigation when page loads
+  useEffect(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const offset = 80;
+          const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth',
+          });
+        }
+      }, 100);
+    }
+  }, []);
+
   return (
     <div className="min-h-screen">
       {/* Navigation */}

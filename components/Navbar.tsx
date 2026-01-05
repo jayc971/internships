@@ -1,13 +1,24 @@
 'use client';
 
 import { useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
 import Logo from './Logo';
 import Link from 'next/link';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
   const scrollToSection = (sectionId: string) => {
+    // If we're not on the home page, navigate to home first
+    if (pathname !== '/') {
+      router.push(`/#${sectionId}`);
+      setIsMenuOpen(false);
+      return;
+    }
+
+    // If we're on the home page, scroll smoothly
     const element = document.getElementById(sectionId);
     if (element) {
       const offset = 80; // Height of navbar
